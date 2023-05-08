@@ -5,7 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.alertFrameWindows.AlertsPage;
 import pages.alertFrameWindows.WindowsPage;
+import pages.bookStore.BookStorePage;
 import pages.bookStore.LoginPage;
+import pages.bookStore.ProfilePage;
+import pages.elements.BrokenLinksImages;
+import pages.elements.LinksPage;
 import pages.interActions.DroppablePage;
 import pages.widgets.SelectMenuPage;
 
@@ -27,6 +31,21 @@ public class SidePanel extends BasePage {
         clickWithJSExecutor(alerts,0,300);
         return new AlertsPage(driver);
     }
+
+
+    @FindBy(xpath = "//span[.='Profile']")
+    WebElement profile;
+    public ProfilePage selectProfile() {
+        clickWithJSExecutor(profile,0,300);
+        return new ProfilePage(driver);
+    }
+    @FindBy(xpath = "//span[.='Book Store']")
+    WebElement bookStore;
+    public BookStorePage selectBookStore() {
+        clickWithJSExecutor(bookStore, 0,200);
+        return new BookStorePage(driver);
+    }
+
     @FindBy(xpath = "//span[.='Browser Windows']")
     WebElement browserWindows;
     public WindowsPage selectBrowserWindows() {
@@ -45,5 +64,23 @@ public class SidePanel extends BasePage {
     public DroppablePage selectDroppable() {
         clickWithJSExecutor(droppable,0,600);
         return new DroppablePage(driver);
+    }
+    @FindBy(xpath = "//span[.='Text Box']")
+    WebElement textBox;
+    public JSExecutor selectTextBox() {
+        click(textBox);
+        return new JSExecutor(driver);
+    }
+    @FindBy(xpath = "//span[.='Links']")
+    WebElement links;
+    public LinksPage selectLinks() {
+        clickWithJSExecutor(links,0,400);
+        return new LinksPage(driver);
+    }
+    @FindBy(xpath = "//span[.='Broken Links - Images']")
+    WebElement brokenLinksImages;
+    public BrokenLinksImages selectBrokenLinks() {
+   clickWithJSExecutor(brokenLinksImages,0,400);
+   return new BrokenLinksImages(driver);
     }
 }

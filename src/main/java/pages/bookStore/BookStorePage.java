@@ -22,4 +22,13 @@ type(searchBox, text);
         Assert.assertTrue(nameOfBook.getText().contains(text));
         return this;
     }
+    @FindBy(xpath = "//div[@class = 'text-right fullButton']/button")
+    WebElement addBookToCollectionButton;
+    public BookStorePage addBookToCollection() {
+        click(nameOfBook);
+        clickWithJSExecutor(addBookToCollectionButton, 0, 200);
+        acceptAlert(10);
+        return this;
+    }
+
 }

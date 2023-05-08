@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -54,5 +55,11 @@ public abstract class BasePage {
     public void hideAd(){
         JavascriptExecutor js= (JavascriptExecutor) driver;
         js.executeScript("document.getElementById('adplus-anchor').style.display='none';");
+    }
+
+    public void acceptAlert(int time) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.accept();
     }
 }
